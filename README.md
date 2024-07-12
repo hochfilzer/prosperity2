@@ -1,4 +1,4 @@
-# Prosperity 2
+# IMC Prosperity 2
 
 Prosperity 2 was a trading challenge organised by IMC trading and took place in the spring of 2024.
 This github repository contains the `trader.py` file that I submitted to the algorithmic part of the challenge (I will henceforth only consider the algorithmic part of the challenge).
