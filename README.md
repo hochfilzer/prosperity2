@@ -30,7 +30,7 @@ product but there were essentially no market making opportunities like with `STA
 one could trade `ORCHIDS` on the neighbouring island for a fixed price at any volume using the `conversion` method, where one needed to take
 tariffs and transport costs into account. This conversion always happened at the end of a timestamp and thus it was possible to quite efficiently
 arbitrage the market and make much profit. I found a good strategy but my order book logic included a rounding error, which probably prevented
-me from achieving a higher Pnl (I was still satisfied with my PnL from this round).
+me from achieving a higher PnL (I was still satisfied with my PnL from this round).
 
 ## Round 3  
 In this round four new products were introduced: `ROSES`, `CHOCOLATE`, `STRAWBERRIES` and a `GIFT_BASKET`. The `GIFT_BASKET` contains four `CHOCOLATE` bars, 
@@ -39,16 +39,19 @@ it was essentially supposed to resemble an ETF. Looking at the historical data o
 Using this, one could try to determine whether the gift basket was relatively cheap or expensive compared to its composites, and thus make trading decisions. 
 In backtests it seemed more profitable to just trade gift baskets informed by the information on the underlying, but this didn't protect against strong 
 market movements. I wanted to obtain a market neutral position and thus executed a pair trading strategy. For example, if I determine that gift baskets were 
-currently cheap to the price of the underlying I would purchase a gift basket and sell the corresponding amount of the composites. I found that this worked 
-very well for me, and generated a good amount of PnL.  
+currently cheap compared to the price of the underlying I would purchase a gift basket and sell the corresponding amount of the composites. I found that this worked 
+very well for me, and generated a good amount of PnL. 
 
 ## Round 4  
 The two newly introduced assets in this round were `COCONUT` and `COCONUT_COUPON`. A `COCONUT_COUPON` functioned like a european call option on `COCONUT` with 
 an expiry date of 250 trading days at a strike price of 10,000 seashells. In the video that was provided by IMC the fair option price, 250 days from expiry was 
 mentioned. This enabled me to compute the implied volatility using Black Scholes. Under the (naive) assumption that the implied volatility would remain constant 
 for the remainder of the trading period one could compute the fair price of `COCONUT_COUPON`. Based on this I either bought or sold `COCONUT_COUPON`, and to 
-remain in a market neutral position I delta hedged using `COCONUT`. I should also note here that it was not possible to exercise the coupons at any point 
-and should really be considered as an independent asset.   
+remain in a market neutral position I delta hedged using `COCONUT`. This worked well for the historical data. I also considered alternative models for the option 
+price such as binomial pricing, and other strategies such as volatility trading, but none of these worked as well as the more naive approach outlined above. 
+I was happy with the PnL from this round.
+I should also note here that it was not possible to exercise the coupons at any point 
+and should really be considered as an independent asset.    
 
 ## Round 5  
 Here the organizers did not introduce any new assets or trading mechanics but instead released historical data regarding which bots made which trades. We could 
